@@ -37,4 +37,4 @@ We welcome contributions to improve InstaDoc Metric Tracker. Please fork the rep
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-For any inquiries or feedback, please reach out to us at support@instadoc.com.
+For any inquiries or feedback, please reach out to us at abbassani94@gmail.com.

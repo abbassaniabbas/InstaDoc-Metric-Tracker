@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaDoc Metric Tracker - About</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a class="brand" href="index.html">
+                <img class="logo" src="INN.png" alt="InstaDoc logo" />
+                <span class="brand-text">InstaDoc Metric Tracker</span>
+            </a>
+
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </label>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a class="active" href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero section: prominent intro with space for an illustration -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <h1>Better metrics, better care</h1>
+                <p class="lead">Capture meaningful clinical metrics with minimal effort — designed for clinicians.</p>
+                <p>Fast setup, privacy-first design, and clear visual reports so teams can focus on patients.</p>
+                <a class="btn-primary hero-cta" href="contact.html">Get Started</a>
+            </div>
+
+            <div class="hero-image" aria-hidden="true">
+                <!-- Replace this placeholder with a photography or illustration at assets/images/hero-placeholder.svg -->
+                <img src="assets/images/hero-placeholder.svg" alt="Illustration representing metrics and teamwork" />
+            </div>
+        </div>
+    </section>
+
+    <header class="page-header">
+        <h1>About InstaDoc Metric Tracker</h1>
+        <p class="lead">Smart, simple metrics for better patient care.</p>
+    </header>
+
+    <main class="container">
+        <section class="content">
+            <div class="card company-overview">
+                <h2>Company Overview</h2>
+                <p>InstaDoc Metric Tracker provides healthcare professionals with intuitive tools to collect, visualize, and report clinical metrics — freeing clinicians to focus on patients, not paperwork.</p>
+            </div>
+
+            <div class="card mission-statement">
+                <h2>Mission Statement</h2>
+                <p>Our mission is to empower healthcare providers with reliable, accessible, and privacy-first analytics that drive better outcomes.</p>
+            </div>
+
+            <div class="card team-profiles">
+                <h2>Meet Our Team</h2>
+                <p>Cross-disciplinary experts in medicine, engineering, and data science who collaborate to build practical, secure tools for clinical teams.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="assets/images/person1.jpg" alt="Team member">
+                        <h3>Mr. Abbas</h3>
+                        <p>Position 1</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="assets/images/person2.jpg" alt="Team member">
+                        <h3>Mr Sunday</h3>
+                        <p>Position 2</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="assets/images/person3.jpg" alt="Team member">
+                        <h3>Mr. Sani</h3>
+                        <p>Position 3</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="image-container">
+            <!-- Drop-in image blends with page; uses .blend for nice overlay when placed -->
+            <img class="blend" src="INN 2.png" alt="Our Team">
+        </aside>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> InstaDoc Metric Tracker. All rights reserved.</p>
+    </footer>
+
+    <script>
+    // automatic footer year (static page, no animations)
+    (function(){ document.getElementById('year').textContent = new Date().getFullYear(); })();
+    </script>
+</body>
+</html>

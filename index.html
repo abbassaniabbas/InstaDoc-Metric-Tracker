@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaDoc Metric Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a class="brand" href="index.html">
+                <img class="logo" src="INN.png" alt="InstaDoc logo" />
+                <span class="brand-text">InstaDoc</span>
+            </a>
+
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </label>
+
+            <ul class="nav-links">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <main>
+        <section class="hero-logo" aria-label="InstaDoc logo hero">
+            <div class="logo-center">
+                <!-- replace the src with your large logo file when available -->
+                <img src="INN.png" alt="InstaDoc large logo placeholder">
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> InstaDoc Metric Tracker. All rights reserved.</p>
+    </footer>
+
+    <script>
+    (function(){ document.getElementById('year').textContent = new Date().getFullYear(); })();
+    </script>
+</body>
+</html>

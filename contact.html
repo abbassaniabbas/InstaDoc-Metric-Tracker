@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>InstaDoc Metric Tracker - Contact</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a class="brand" href="index.html">
+                <img class="logo" src="INN.png" alt="InstaDoc logo" />
+                <span class="brand-text">InstaDoc Metric Tracker</span>
+            </a>
+
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </label>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a class="active" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Contact Instadoc</h1>
+        <p class="lead">Send a general enquiry or message and we'll route it to the right team.</p>
+    </header>
+
+    <main class="container">
+        <section class="content">
+            <div class="card">
+                <h2>Send us a message</h2>
+
+                <form id="contactForm" class="contact-form" novalidate action="https://formsubmit.co/d047302bf319225995a038715b18eb7f">
+                    <!-- FormSubmit integration: use AJAX endpoint so page is not redirected -->
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="hidden" name="_subject" value="InstaDoc Website Inquiry" />
+                    <!-- replace abbassani94@gmail.com with the real destination if different -->
+                    <!-- form will be posted to /ajax/abbassani94@gmail.com via JS -->
+                     <label>
+                         Name
+                         <input type="text" name="name" id="name" required />
+                     </label>
+
+                     <label>
+                         Email
+                         <input type="email" name="email" id="email" required />
+                     </label>
+
+                     <label>
+                         Department
+                         <select id="department" name="department">
+                             <option value="general">General Enquiry</option>
+                             <option value="sales">Sales</option>
+                             <option value="support">Support</option>
+                             <option value="partnerships">Partnerships</option>
+                         </select>
+                     </label>
+
+                     <label>
+                         Subject
+                         <input type="text" name="subject" id="subject" required />
+                     </label>
+
+                     <label>
+                         Message
+                         <textarea name="message" id="message" rows="6" required></textarea>
+                     </label>
+
+                     <div class="form-actions">
+                         <button type="submit" id="sendBtn" class="btn-primary">Send Message</button>
+                         <div id="formStatus" class="form-status" aria-live="polite"></div>
+                     </div>
+                </form>
+                <!-- stylish success popup (hidden by default) -->
+                <div id="successModal" class="success-modal" role="status" aria-hidden="true">
+                    <div class="success-card">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="success-text">
+                            <strong>Thanks — message sent</strong>
+                            <div class="muted small">We will reply shortly.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="muted" style="margin-top:12px;">
+                    Or email directly:
+                    <a id="directEmail" href="mailto:abbassani94@gmail.com">abbassani94@gmail.com</a>
+                </p>
+            </div>
+        </section>
+
+        <aside class="image-container">
+            <img class="blend" src="INN 2.png" alt="Contact illustration">
+        </aside>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> InstaDoc Metric Tracker. All rights reserved.</p>
+    </footer>
+
+    <script>
+    (function(){
+        // FormSubmit AJAX endpoint (replace email if needed)
+        const FORM_ENDPOINT = 'https://formsubmit.co/d047302bf319225995a038715b18eb7f';
+
+        const deptEmails = {
+            general: 'abbassani94@gmail.com',
+            sales: 'abbassani94@gmail.com',
+            support: 'abbassani94@gmail.com',
+            partnerships: 'abbassani94@gmail.com'
+        };
+
+        const form = document.getElementById('contactForm');
+        const status = document.getElementById('formStatus');
+        const sendBtn = document.getElementById('sendBtn');
+        const modal = document.getElementById('successModal');
+
+         function validateEmail(email){
+             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+         }
+ 
+         function showTempMessage(text, cls='success', ms=2000){
+             status.textContent = text;
+             status.className = 'form-status ' + cls;
+             setTimeout(()=> {
+                 status.textContent = '';
+                 status.className = 'form-status';
+             }, ms);
+         }
+ 
+         form.addEventListener('submit', async function(e){
+             e.preventDefault();
+             status.textContent = '';
+             const name = document.getElementById('name').value.trim();
+             const email = document.getElementById('email').value.trim();
+             const subject = document.getElementById('subject').value.trim();
+             const message = document.getElementById('message').value.trim();
+             const dept = document.getElementById('department').value;
+ 
+             if(!name || !email || !subject || !message){
+                 showTempMessage('Please complete all fields.', 'error', 2000);
+                 return;
+             }
+             if(!validateEmail(email)){
+                 showTempMessage('Please enter a valid email address.', 'error', 2000);
+                 return;
+             }
+ 
+             // Use FormData and POST to FormSubmit's ajax endpoint so browser doesn't redirect
+             const fd = new FormData(form);
+             fd.append('department', dept); // add department field to submission
+ 
+             try {
+                 sendBtn.disabled = true;
+                 sendBtn.textContent = 'Sending...';
+ 
+                 const res = await fetch(FORM_ENDPOINT, {
+                     method: 'POST',
+                     body: fd,
+                     headers: { 'Accept': 'application/json' }
+                 });
+ 
+                 if(res.ok){
+                     form.reset();
+                     // show stylish modal for 2s
+                     modal.setAttribute('aria-hidden', 'false');
+                     modal.classList.add('show');
+                     setTimeout(()=> {
+                         modal.classList.remove('show');
+                         modal.setAttribute('aria-hidden', 'true');
+                     }, 1800);
+                 } else {
+                     const err = await res.json().catch(()=>({message:'Server error'}));
+                     showTempMessage(err.message || 'Failed to send message.', 'error', 2000);
+                 }
+             } catch (err) {
+                 showTempMessage('Network error. Try again later.', 'error', 2000);
+             } finally {
+                 sendBtn.disabled = false;
+                 sendBtn.textContent = 'Send Message';
+             }
+         });
+     })();
+ 
+     // automatic footer year (static page)
+     (function(){ document.getElementById('year').textContent = new Date().getFullYear(); })();
+     </script>
+</body>
+</html>

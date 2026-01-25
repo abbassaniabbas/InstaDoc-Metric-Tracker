@@ -47,11 +47,13 @@
                      <label>
                          Name
                          <input type="text" name="name" id="name" required />
+                         <small class="field-error" aria-live="polite"></small>
                      </label>
 
                      <label>
                          Email
                          <input type="email" name="email" id="email" required />
+                         <small class="field-error" aria-live="polite"></small>
                      </label>
 
                      <label>
@@ -67,11 +69,13 @@
                      <label>
                          Subject
                          <input type="text" name="subject" id="subject" required />
+                         <small class="field-error" aria-live="polite"></small>
                      </label>
 
                      <label>
                          Message
                          <textarea name="message" id="message" rows="6" required></textarea>
+                         <small class="field-error" aria-live="polite"></small>
                      </label>
 
                      <div class="form-actions">
@@ -137,6 +141,55 @@
                  status.className = 'form-status';
              }, ms);
          }
+
+        // Real-time field validation while typing
+        const fields = {
+            name: document.getElementById('name'),
+            email: document.getElementById('email'),
+            subject: document.getElementById('subject'),
+            message: document.getElementById('message')
+        };
+
+        function setFieldState(el, valid, msg=''){
+            const errorEl = el.parentElement && el.parentElement.querySelector('.field-error');
+            el.classList.toggle('valid', !!valid);
+            el.classList.toggle('invalid', !valid);
+            if(errorEl) errorEl.textContent = valid ? '' : msg;
+        }
+
+        function validateField(el){
+            const v = (el.value || '').trim();
+            if(!el) return {valid:true};
+            if(el.id === 'name'){
+                if(v.length < 2) return {valid:false, msg:'Name must be at least 2 characters long'};
+                return {valid:true};
+            }
+            if(el.id === 'email'){
+                if(!validateEmail(v)) return {valid:false, msg:'Enter a valid email address'};
+                return {valid:true};
+            }
+            if(el.id === 'subject'){
+                if(v.length < 3) return {valid:false, msg:'Add a short subject'};
+                return {valid:true};
+            }
+            if(el.id === 'message'){
+                if(v.length < 10) return {valid:false, msg:'Message should be 10+ characters'};
+                return {valid:true};
+            }
+            return {valid:true};
+        }
+
+        Object.values(fields).forEach(el => {
+            if(!el) return;
+            el.addEventListener('input', () => {
+                const r = validateField(el);
+                setFieldState(el, r.valid, r.msg || '');
+            });
+            el.addEventListener('blur', () => {
+                const r = validateField(el);
+                setFieldState(el, r.valid, r.msg || '');
+            });
+        });
  
          form.addEventListener('submit', async function(e){
              e.preventDefault();
@@ -171,7 +224,10 @@
                  });
  
                  if(res.ok){
-                     form.reset();
+                    form.reset();
+                    // clear validation UI
+                    Array.from(form.querySelectorAll('.valid, .invalid')).forEach(el=> el.classList.remove('valid','invalid'));
+                    Array.from(form.querySelectorAll('.field-error')).forEach(el=> el.textContent = '');
                      // show stylish modal for 2s
                      modal.setAttribute('aria-hidden', 'false');
                      modal.classList.add('show');

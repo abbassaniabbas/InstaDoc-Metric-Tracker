@@ -405,6 +405,27 @@ body{
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
 }
 
+/* Realtime validation styles */
+.field-error{
+    display:block;
+    margin-top:6px;
+    font-size:0.9rem;
+    color:#b91c1c;
+    min-height:18px;
+}
+.contact-form input.valid,
+.contact-form textarea.valid,
+.contact-form select.valid{
+    border-color: #16a34a;
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.06);
+}
+.contact-form input.invalid,
+.contact-form textarea.invalid,
+.contact-form select.invalid{
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220,38,38,0.05);
+}
+
 /* Button Styling */
 .btn-primary {
     background-color: #007bff;

@@ -19,10 +19,10 @@
                 <span></span><span></span><span></span>
             </label>
 
-            <ul class="nav-links">
+                <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a class="active" href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -61,7 +61,8 @@
                             <option value="general">General Enquiry</option>
                             <option value="preventative">Preventative Care</option>
                             <option value="pharmacy">Pharmacy and Meds</option>
-                            <option value="telehealth">TeleHealth Support and Care Coordination</option>
+                            <option value="telehealth">TeleHealth Support</option>
+                            <option value="careCoordination">Care Coordination</option>
                         </select>
                         <label class="floating-label" for="department">Department</label>
                     </div>
@@ -161,7 +162,7 @@
             const v = (el.value || '').trim();
             if(!el) return {valid:true};
             if(el.id === 'name'){
-                if(v.length < 2) return {valid:false, msg:'Name must be at least 2 characters long'};
+                if(v.length < 2) return {valid:false, msg:'Name must be at least 2 chars long'};
                 return {valid:true};
             }
             if(el.id === 'email'){
@@ -169,11 +170,12 @@
                 return {valid:true};
             }
             if(el.id === 'subject'){
-                if(v.length < 3) return {valid:false, msg:'Add a short subject'};
+                if(v.length < 1) return {valid:false, msg:'Add a subject'};
                 return {valid:true};
             }
             if(el.id === 'message'){
-                if(v.length < 10) return {valid:false, msg:'Message should be 10+ characters'};
+                if(v.length < 3 && v.length > 0) return {valid:false, msg:'Message should be at least 3 chars long'};
+                if(v.length = 0) return {valid:false, msg:'Add a Message'};
                 return {valid:true};
             }
             return {valid:true};

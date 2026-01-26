@@ -506,7 +506,10 @@ body{
 }
 .contact-form .btn-primary:hover,
 #sendBtn:hover {
-    filter: brightness(0.96);
+    /* match Email Us button hover (same as .btn-primary:hover) */
+    background-color: #0056b3;
+    color: #fff;
+    filter: none;
 }
 
 /* Status message area */

@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InstaDoc Metric Tracker - About</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+    /* Hero overlay text: leafy green (falls back to #2ea44f) */
+    .top-banner .hero-text-overlay h1,
+    .top-banner .hero-text-overlay .lead,
+    .top-banner .hero-text-overlay .muted {
+        color: var(--accent, #2ea44f);
+    }
+
+    /* Shift banner image crop to the right for better composition */
+    .top-banner .banner-img {
+        object-position: 85% 15%;
+    }
+    </style>
 </head>
 <body>
     <nav class="site-nav">
@@ -34,8 +48,8 @@
         <div class="hero-overlay">
             <div class="hero-text-overlay">
                 <h1>Better metrics. Better care.</h1>
-                <p class="lead">Measure what matters — clinical metrics made simple, secure, and actionable.</p>
-                <p class="muted">Built with clinicians in mind: fast setup, privacy-first architecture, and elegant reports that drive decision-making.</p>
+                <p class="lead">Measure what matters <br> metrics made simple, secure, and actionable.</p>
+                <p class="muted">Built with clinicians in mind: fast setup, privacy-first architecture<br>and elegant reports that drive decision-making.</p>
                 <div class="hero-ctas">
                     <a class="btn-primary hero-cta" href="contact.html">Get Started</a>
                     <a class="btn-outline" href="services.html">See Features</a>

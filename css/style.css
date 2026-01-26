@@ -258,16 +258,63 @@ body{
 .trust-badges .badge{ background:rgba(15,23,36,0.03); padding:8px 10px; border-radius:8px; color:var(--muted); font-weight:600 }
 
 /* Top banner below nav */
-.top-banner{ display:flex; justify-content:center; padding:12px 0; }
-    .top-banner{ position:relative; }
-    .top-banner .banner-img{ width:100%; max-width:1100px; height: clamp(240px, 32vh, 440px); border-radius:12px; box-shadow:var(--shadow); object-fit:cover; object-position:50% 15%; display:block }
+.top-banner{ 
+    display:flex; 
+    justify-content:center; 
+    padding:12px 0; 
+}
+    .top-banner{ 
+        position:relative; 
+        width:100vw; 
+        left:50%; 
+        right:50%; 
+        margin-left:-48vw; 
+        margin-right:-50vw; 
+        padding:0; 
+        overflow:hidden 
+    }
+    .top-banner .banner-img{ 
+        width:100%; 
+        max-width:none; 
+        height: clamp(240px, 32vh, 440px); 
+        border-radius:0; 
+        box-shadow:none; 
+        object-fit:cover; 
+        object-position:70% 15%; 
+        display:block 
+    }
 
+
+    .top-banner {
+    position: relative;
+    width: 100vw;
+    /* Move the anchor point to the right */
+    left: 92%; 
+    /* Pull the 100vw width back so it stays on screen */
+    margin-left: -90vw; 
+    margin-right: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.top-banner .banner-img {
+    width: 70%;
+    max-width: none;
+    height: clamp(240px, 32vh, 440px);
+    border-radius: 0;
+    /* Focus on the right side of the image content */
+    object-fit: cover;
+    object-position: right center; 
+    display: block;
+}
+
+    
 /* Hero overlay on top of banner */
 .hero-overlay{ position:absolute; left:0; right:0; top:0; bottom:0; display:flex; align-items:center; justify-content:flex-start; pointer-events:none }
-.hero-text-overlay{ pointer-events:auto; max-width:720px; margin-left:5%; color:#fff; background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.12)); padding:18px; border-radius:10px }
-.hero-text-overlay h1{ margin:0 0 8px; color:#fff }
-.hero-text-overlay .lead{ color:rgba(255,255,255,0.95); font-size:1.05rem }
-.hero-text-overlay .muted{ color:rgba(255,255,255,0.85); margin-top:8px }
+.hero-text-overlay{ pointer-events:auto; max-width:720px; margin-left:5%; color:#fff; background:transparent; padding:18px; border-radius:0 }
+.hero-text-overlay h1{ margin:0 0 8px; color:#fff; text-shadow:0 6px 18px rgba(0,0,0,0.45) }
+.hero-text-overlay .lead{ color:rgba(255,255,255,0.95); font-size:1.05rem; text-shadow:0 4px 12px rgba(0,0,0,0.35) }
+.hero-text-overlay .muted{ color:rgba(255,255,255,0.85); margin-top:8px; text-shadow:0 2px 8px rgba(0,0,0,0.25) }
 .hero-ctas{ margin-top:12px; display:flex; gap:12px }
 .btn-outline{ background:transparent; color:var(--accent); border:1px solid rgba(255,255,255,0.18); padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:700 }
 

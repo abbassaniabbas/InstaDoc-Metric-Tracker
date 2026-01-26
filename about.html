@@ -28,22 +28,21 @@
         </div>
     </nav>
 
-    <!-- Hero section: prominent intro with space for an illustration -->
-    <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-text">
-                <h1>Better metrics, better care</h1>
-                <p class="lead">Capture meaningful clinical metrics with minimal effort — designed for clinicians.</p>
-                <p>Fast setup, privacy-first design, and clear visual reports so teams can focus on patients.</p>
-                <a class="btn-primary hero-cta" href="contact.html">Get Started</a>
-            </div>
-
-            <div class="hero-image" aria-hidden="true">
-                <!-- Replace this placeholder with a photography or illustration at assets/images/hero-placeholder.svg -->
-                <img src="assets/images/hero-placeholder.svg" alt="Illustration representing metrics and teamwork" />
+    <!-- Top banner image (INN 2.png) with hero overlay -->
+    <div class="top-banner">
+        <img src="INN 2.png" alt="InstaDoc banner" class="banner-img">
+        <div class="hero-overlay">
+            <div class="hero-text-overlay">
+                <h1>Better metrics. Better care.</h1>
+                <p class="lead">Measure what matters — clinical metrics made simple, secure, and actionable.</p>
+                <p class="muted">Built with clinicians in mind: fast setup, privacy-first architecture, and elegant reports that drive decision-making.</p>
+                <div class="hero-ctas">
+                    <a class="btn-primary hero-cta" href="contact.html">Get Started</a>
+                    <a class="btn-outline" href="services.html">See Features</a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <header class="page-header">
         <h1>About InstaDoc Metric Tracker</h1>
@@ -52,42 +51,92 @@
 
     <main class="container">
         <section class="content">
-            <div class="card company-overview">
-                <h2>Company Overview</h2>
-                <p>InstaDoc Metric Tracker provides healthcare professionals with intuitive tools to collect, visualize, and report clinical metrics — freeing clinicians to focus on patients, not paperwork.</p>
+            <div class="card">
+                <h2>The Big Why</h2>
+                <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:flex-start;">
+                    <div style="flex:1; min-width:240px">
+                        <h3>Mission</h3>
+                        <p>To empower healthcare providers with real-time data to eliminate patient wait times.</p>
+                        <h3>Vision</h3>
+                        <p>A world where quality healthcare is instant and data-driven for everyone.</p>
+                    </div>
+                    <div style="flex:1; min-width:200px">
+                        <h3>Core Values</h3>
+                        <ul class="values-list">
+                            <li><strong>Transparency</strong> — clear, auditable metric reporting.</li>
+                            <li><strong>Accuracy</strong> — clinically-validated measurements.</li>
+                            <li><strong>Empathy</strong> — designing for patients and clinicians.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="card mission-statement">
-                <h2>Mission Statement</h2>
-                <p>Our mission is to empower healthcare providers with reliable, accessible, and privacy-first analytics that drive better outcomes.</p>
+            <div class="card">
+                <h2>The InstaDoc Story</h2>
+                <p><strong>The Problem:</strong> For too long, clinical teams have wrestled with fragmented spreadsheets, manual forms and the chaos of old-school metric tracking — producing noise, not insight.</p>
+                <p><strong>The Solution:</strong> InstaDoc was born to bridge the gap between complex medical data and simple, actionable insight. We distilled clinician workflows into an elegant web app that captures the right data at the right time.</p>
+                <div class="timeline" aria-hidden="true">
+                    <div class="timeline-item"><strong>Idea</strong> — 2022: a clinician-designed prototype</div>
+                    <div class="timeline-item"><strong>Build</strong> — 2023: MVP and early clinic pilots</div>
+                    <div class="timeline-item"><strong>Scale</strong> — 2024: wider deployments and refinements</div>
+                </div>
             </div>
 
-            <div class="card team-profiles">
-                <h2>Meet Our Team</h2>
-                <p>Cross-disciplinary experts in medicine, engineering, and data science who collaborate to build practical, secure tools for clinical teams.</p>
+            <div class="card">
+                <h2>Meet the SMEs</h2>
+                <p>Specialised roles that guarantee clinical validity, technical excellence and compliance.</p>
                 <div class="team-grid">
                     <div class="team-member">
-                        <img src="assets/images/person1.jpg" alt="Team member">
-                        <h3>Mr. Abbas</h3>
-                        <p>Position 1</p>
+                        <img src="assets/images/person1.jpg" alt="Clinical Lead" style="width:96px;height:96px;border-radius:50%;object-fit:cover">
+                        <h3>Clinical Lead</h3>
+                        <p>Ensures metrics are medically accurate and actionable.</p>
                     </div>
                     <div class="team-member">
-                        <img src="assets/images/person2.jpg" alt="Team member">
-                        <h3>Mr Sunday</h3>
-                        <p>Position 2</p>
+                        <img src="assets/images/person2.jpg" alt="Tech Architect" style="width:96px;height:96px;border-radius:50%;object-fit:cover">
+                        <h3>Tech Architect</h3>
+                        <p>Designs the HTML/CSS/JS engine and system architecture.</p>
                     </div>
                     <div class="team-member">
-                        <img src="assets/images/person3.jpg" alt="Team member">
-                        <h3>Mr. Sani</h3>
-                        <p>Position 3</p>
+                        <img src="assets/images/person3.jpg" alt="Compliance Officer" style="width:96px;height:96px;border-radius:50%;object-fit:cover">
+                        <h3>Compliance Officer</h3>
+                        <p>Oversees patient-data security and regulatory alignment.</p>
                     </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Our Impact — The Standard of Care Dashboard</h2>
+                <div style="display:flex; gap:18px; flex-wrap:wrap; margin-top:12px;">
+                    <div class="stat-card">
+                        <div class="stat-value">12,345</div>
+                        <div class="muted small">Lines of code</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">18</div>
+                        <div class="muted small">Core features</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">1,200+</div>
+                        <div class="muted small">Clinic-hours saved</div>
+                    </div>
+                </div>
+                <blockquote style="margin-top:14px; font-style:italic; color:var(--muted)">"InstaDoc transformed our metrics workflow — faster insights, better care." — Dr. A. Clinician</blockquote>
+            </div>
+
+            <div class="card">
+                <h2>Compliance &amp; Security</h2>
+                <p>Trust is non-negotiable. Our Security Pillar focuses on secure defaults, encrypted data flows, and regular audits.</p>
+                <div class="trust-badges" style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap; align-items:center">
+                    <div class="badge">🔒 Encrypted at rest</div>
+                    <div class="badge">✅ Regular audits</div>
+                    <div class="badge">📜 Privacy-first design</div>
                 </div>
             </div>
         </section>
 
-        <aside class="image-container">
-            <!-- Drop-in image blends with page; uses .blend for nice overlay when placed -->
-            <img class="blend" src="INN 2.png" alt="Our Team">
+        <aside class="image-container" aria-hidden="true">
+            <!-- decorative illustration to the side for premium feel -->
+            <img class="blend" src="assets/images/hero-placeholder.svg" alt="Team illustration">
         </aside>
     </main>
 

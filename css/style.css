@@ -246,6 +246,36 @@ body{
 .contact-info .info-list li{ margin:8px 0; font-size:0.95rem }
 .contact-info .btn-primary{ width:100%; padding:10px 12px; border-radius:8px; background:var(--accent); color:#fff; text-align:center; display:inline-block }
 
+/* About page specific styles */
+.values-list{ margin:0; padding-left:1.05rem; color:var(--muted) }
+.timeline{ margin-top:10px; display:flex; flex-direction:column; gap:8px; color:var(--muted) }
+.timeline-item{ background:rgba(15,23,36,0.02); padding:8px 10px; border-radius:8px; }
+.team-grid{ display:flex; gap:18px; margin-top:12px; flex-wrap:wrap }
+.team-member{ text-align:center; width:120px }
+.team-member h3{ margin:8px 0 4px }
+.stat-card{ flex:1; min-width:120px; background:rgba(15,23,36,0.02); padding:12px; border-radius:10px; text-align:center }
+.stat-value{ font-size:1.4rem; font-weight:700; color:var(--accent) }
+.trust-badges .badge{ background:rgba(15,23,36,0.03); padding:8px 10px; border-radius:8px; color:var(--muted); font-weight:600 }
+
+/* Top banner below nav */
+.top-banner{ display:flex; justify-content:center; padding:12px 0; }
+    .top-banner{ position:relative; }
+    .top-banner .banner-img{ width:100%; max-width:1100px; height: clamp(240px, 32vh, 440px); border-radius:12px; box-shadow:var(--shadow); object-fit:cover; object-position:50% 15%; display:block }
+
+/* Hero overlay on top of banner */
+.hero-overlay{ position:absolute; left:0; right:0; top:0; bottom:0; display:flex; align-items:center; justify-content:flex-start; pointer-events:none }
+.hero-text-overlay{ pointer-events:auto; max-width:720px; margin-left:5%; color:#fff; background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.12)); padding:18px; border-radius:10px }
+.hero-text-overlay h1{ margin:0 0 8px; color:#fff }
+.hero-text-overlay .lead{ color:rgba(255,255,255,0.95); font-size:1.05rem }
+.hero-text-overlay .muted{ color:rgba(255,255,255,0.85); margin-top:8px }
+.hero-ctas{ margin-top:12px; display:flex; gap:12px }
+.btn-outline{ background:transparent; color:var(--accent); border:1px solid rgba(255,255,255,0.18); padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:700 }
+
+@media (max-width:900px){
+    .hero-text-overlay{ margin-left:4%; max-width:90%; padding:12px }
+    .hero-text-overlay h1{ font-size:1.25rem }
+}
+
 /* FOOTER */
 .site-footer{
     max-width:var(--max-width);

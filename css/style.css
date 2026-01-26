@@ -367,7 +367,9 @@ body{
     max-width: 600px;
     margin: 2rem auto;
     padding: 2rem;
-    background: #ffffff;
+    /* glassmorphism background */
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(8px) saturate(120%);
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -388,7 +390,7 @@ body{
 .contact-form textarea {
     width: 100%;
     margin-top: 0.5rem;
-    padding: 0.8rem;
+    padding: 1.1rem 0.8rem 0.8rem; /* extra top padding for floating label */
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
@@ -403,6 +405,38 @@ body{
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+/* Floating label / form-field */
+.form-field{ position:relative; margin-bottom:1rem }
+.form-field .floating-label{
+    position:absolute;
+    left:12px;
+    top:14px;
+    pointer-events:none;
+    color:var(--muted);
+    font-weight:600;
+    transition: transform 160ms ease, font-size 160ms ease, color 160ms ease;
+    transform-origin:left top;
+    background: transparent;
+    padding:0 6px;
+}
+.form-field.has-value .floating-label,
+.form-field input:focus + .floating-label,
+.form-field textarea:focus + .floating-label,
+.form-field select:focus + .floating-label{
+    transform: translateY(-135%) scale(0.88);
+    font-size:0.82rem;
+    color: #0b5; /* subtle green tint when floating */
+    background: rgba(255,255,255,0.55);
+}
+.form-field select{ appearance:auto }
+
+/* small visual polish for glass inputs */
+.contact-form input,
+.contact-form textarea,
+.contact-form select{
+    background: rgba(255,255,255,0.7);
 }
 
 /* Realtime validation styles */

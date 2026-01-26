@@ -44,39 +44,39 @@
                     <input type="hidden" name="_subject" value="InstaDoc Website Inquiry" />
                     <!-- replace abbassani94@gmail.com with the real destination if different -->
                     <!-- form will be posted to /ajax/abbassani94@gmail.com via JS -->
-                     <label>
-                         Name
-                         <input type="text" name="name" id="name" required />
-                         <small class="field-error" aria-live="polite"></small>
-                     </label>
+                    <div class="form-field">
+                        <input type="text" name="name" id="name" required placeholder=" " />
+                        <label class="floating-label" for="name">Name</label>
+                        <small class="field-error" aria-live="polite"></small>
+                    </div>
 
-                     <label>
-                         Email
-                         <input type="email" name="email" id="email" required />
-                         <small class="field-error" aria-live="polite"></small>
-                     </label>
+                    <div class="form-field">
+                        <input type="email" name="email" id="email" required placeholder=" " />
+                        <label class="floating-label" for="email">Email</label>
+                        <small class="field-error" aria-live="polite"></small>
+                    </div>
 
-                     <label>
-                         Department
-                         <select id="department" name="department">
-                             <option value="general">General Enquiry</option>
-                             <option value="sales">Sales</option>
-                             <option value="support">Support</option>
-                             <option value="partnerships">Partnerships</option>
-                         </select>
-                     </label>
+                    <div class="form-field has-value">
+                        <select id="department" name="department">
+                            <option value="general">General Enquiry</option>
+                            <option value="sales">Sales</option>
+                            <option value="support">Support</option>
+                            <option value="partnerships">Partnerships</option>
+                        </select>
+                        <label class="floating-label" for="department">Department</label>
+                    </div>
 
-                     <label>
-                         Subject
-                         <input type="text" name="subject" id="subject" required />
-                         <small class="field-error" aria-live="polite"></small>
-                     </label>
+                    <div class="form-field">
+                        <input type="text" name="subject" id="subject" required placeholder=" " />
+                        <label class="floating-label" for="subject">Subject</label>
+                        <small class="field-error" aria-live="polite"></small>
+                    </div>
 
-                     <label>
-                         Message
-                         <textarea name="message" id="message" rows="6" required></textarea>
-                         <small class="field-error" aria-live="polite"></small>
-                     </label>
+                    <div class="form-field">
+                        <textarea name="message" id="message" rows="6" required placeholder=" "></textarea>
+                        <label class="floating-label" for="message">Message</label>
+                        <small class="field-error" aria-live="polite"></small>
+                    </div>
 
                      <div class="form-actions">
                          <button type="submit" id="sendBtn" class="btn-primary">Send Message</button>
@@ -181,15 +181,28 @@
 
         Object.values(fields).forEach(el => {
             if(!el) return;
+            // initialize has-value class if field already has content
+            const parent = el.parentElement;
+            if(parent) parent.classList.toggle('has-value', !!el.value && el.value.trim().length > 0);
+
             el.addEventListener('input', () => {
                 const r = validateField(el);
                 setFieldState(el, r.valid, r.msg || '');
+                if(parent) parent.classList.toggle('has-value', !!el.value && el.value.trim().length > 0);
             });
             el.addEventListener('blur', () => {
                 const r = validateField(el);
                 setFieldState(el, r.valid, r.msg || '');
             });
         });
+
+        // department select: toggle floating label on change
+        const deptEl = document.getElementById('department');
+        if(deptEl){
+            const parent = deptEl.parentElement;
+            parent.classList.toggle('has-value', !!deptEl.value);
+            deptEl.addEventListener('change', ()=> parent.classList.toggle('has-value', !!deptEl.value));
+        }
  
          form.addEventListener('submit', async function(e){
              e.preventDefault();

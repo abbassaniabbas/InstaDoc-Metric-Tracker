@@ -228,6 +228,24 @@ body{
     background:linear-gradient(135deg, rgba(47,143,70,0.06), rgba(255,255,255,0.06));
 }
 
+/* Sidebar / quick info */
+.sidebar{ display:flex; flex-direction:column; gap:56px; align-items:center }
+.sidebar .image-container{ width:100%; display:flex; justify-content:center }
+.sidebar .image-container img.blend{
+    /* slightly larger, responsive circular image */
+    width: clamp(240px, 28vw, 360px);
+    height: clamp(240px, 28vw, 360px);
+    object-fit:cover;
+    border-radius:50%;
+    mix-blend-mode:normal;
+    box-shadow: 0 10px 30px rgba(16,24,32,0.16);
+}
+.contact-info.card{ padding:16px; border-radius:12px; background: rgba(255,255,255,0.6); backdrop-filter: blur(6px) saturate(120%); width:100%; max-width:320px; text-align:center }
+.contact-info h3{ margin:0 0 6px; color:var(--accent) }
+.contact-info .info-list{ list-style:none; padding:0; margin:8px 0 12px; color:var(--muted) }
+.contact-info .info-list li{ margin:8px 0; font-size:0.95rem }
+.contact-info .btn-primary{ width:100%; padding:10px 12px; border-radius:8px; background:var(--accent); color:#fff; text-align:center; display:inline-block }
+
 /* FOOTER */
 .site-footer{
     max-width:var(--max-width);
@@ -476,6 +494,19 @@ body{
 
 .btn-primary:hover {
     background-color: #0056b3;
+}
+
+/* Contact form send button: use leafy green accent */
+.contact-form .btn-primary,
+#sendBtn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    box-shadow: 0 8px 20px rgba(47,143,70,0.12);
+}
+.contact-form .btn-primary:hover,
+#sendBtn:hover {
+    filter: brightness(0.96);
 }
 
 /* Status message area */

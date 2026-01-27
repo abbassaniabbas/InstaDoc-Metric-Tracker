@@ -251,11 +251,17 @@ body{
 
 /* CONTENT CARDS */
 .card{
-    background:var(--card);
+   /* background:var(--card); */
+    background: transparent;
     border-radius:var(--radius);
-    padding:14px; /* slightly reduced card padding */
-    box-shadow:var(--shadow);
-    margin-bottom:12px;
+  /*  padding:14px;  slightly reduced card padding */
+   /* box-shadow:var(--shadow); */
+    box-shadow: none;
+    padding: 60px 20px; /* Large vertical spacing */
+    border-radius: 0;
+    border-bottom: 1px solid #eee; /* Subtle separation lines */
+    margin-bottom: 0;
+   /* margin-bottom:12px; */
 }
 .card h2{ margin:0 0 8px; font-size:1.1rem }
 .card p{ margin:0; color:var(--muted) }
@@ -381,11 +387,57 @@ body{
     
 /* Hero overlay on top of banner */
 .hero-overlay{ position:absolute; left:0; right:0; top:0; bottom:0; display:flex; align-items:center; justify-content:flex-start; pointer-events:none }
-.hero-text-overlay{ pointer-events:auto; max-width:720px; margin-left:5%; color:#fff; background:transparent; padding:18px; border-radius:0 }
-.hero-text-overlay h1{ margin:0 0 8px; color:#fff; text-shadow:0 6px 18px rgba(0,0,0,0.45) }
-.hero-text-overlay .lead{ color:rgba(255,255,255,0.95); font-size:1.05rem; text-shadow:0 4px 12px rgba(0,0,0,0.35) }
+.hero-text-overlay{ 
+    pointer-events:auto; 
+    max-width:720px; 
+    margin-left:5%; 
+    color:#fff; 
+    background:transparent; 
+    padding:18px; 
+    border-radius:0 
+}
+
+.hero-text-overlay h1{
+    font-size: 3.5rem; /* Larger, bolder heading */
+    line-height: 1.1;
+    margin:0 0 8px; 
+    color:#fff; 
+  /*  text-shadow:0 6px 18px rgba(0,0,0,0.45) */
+  text-shadow: none;
+}
+
+.hero-text-overlay .lead{ 
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.9) !important;
+  /*  color:rgba(255,255,255,0.95); 
+    font-size:1.05rem; */
+    text-shadow:0 4px 12px rgba(0,0,0,0.35) 
+}
+
 .hero-text-overlay .muted{ color:rgba(255,255,255,0.85); margin-top:8px; text-shadow:0 2px 8px rgba(0,0,0,0.25) }
-.hero-ctas{ margin-top:12px; display:flex; gap:12px }
+.hero-ctas{ 
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+   /* margin-top:12px; 
+    display:flex; 
+    gap:12px; 
+    justify-content: center; 
+    flex-wrap: wrap; */
+
+}
+
+.hero-cta, .btn-outline {
+    height: 50px; /* Match YNV's larger buttons */
+    padding: 0 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px; /* Slightly more square */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
 .btn-outline{ background:transparent; color:var(--accent); border:1px solid rgba(255,255,255,0.18); padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:700 }
 
 @media (max-width:900px){
@@ -689,4 +741,34 @@ body{
 
 .success-modal.show {
     display: flex;
+}
+
+
+.top-banner {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    height: 450px;
+    padding: 0;
+    overflow: hidden;
+    
+    /* New Gradient: Fades from cool grey to transparent/white to the right */
+   /* height: clamp(240px, 32vh, 440px); */
+   /* background: linear-gradient(to right, #333F44 0%, #4A5568 40%, rgba(255,255,255,0) 100%); */
+    background: linear-gradient(90deg, #333F44 0%, #4A5568 35%, rgba(255,255,255,0) 100%);
+    display: flex;
+    align-items: center;
+}
+
+/* Ensure the overlay takes up the full height of the new background */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    pointer-events: none;
 }

@@ -3,8 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InstaDoc Metric Tracker</title>
+    <title>InstaDoc Metric Tracker - Better Healthcare Metrics</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Homepage Custom Styles */
+        :root {
+            --primary-dark: #1a365d;
+            --primary-light: #2d5ba9;
+            --accent-color: #3b82f6;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #4a5568;
+            --success-color: #10b981;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 6rem 1rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-logo {
+            margin-bottom: 2rem;
+        }
+        
+        .hero-logo img {
+            height: 120px;
+            width: auto;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: white;
+        }
+        
+        /* Services Preview */
+        .services-preview {
+            padding: 5rem 1rem;
+            background: var(--light-gray);
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .section-header h2 {
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--dark-gray);
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .service-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .service-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 5rem 1rem;
+            background: white;
+        }
+        
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: var(--dark-gray);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 5rem 1rem;
+            background: var(--light-gray);
+        }
+        
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .feature-content h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .feature-content p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 1rem;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-color) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-buttons .btn-primary {
+            background: white;
+            color: var(--primary-dark);
+        }
+        
+        .cta-buttons .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .cta-buttons .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-buttons .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons,
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            .service-card,
+            .feature-card {
+                padding: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.8rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; }
+    </style>
 </head>
 <body>
     <nav class="site-nav">
@@ -28,22 +402,206 @@
         </div>
     </nav>
 
-    
-    <main>
-        <section class="hero-logo" aria-label="InstaDoc logo hero">
-            <div class="logo-center">
-                <!-- replace the src with your large logo file when available -->
-                <img src="INN.png" alt="InstaDoc large logo placeholder">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-logo animate-fade-in-up">
+                <img src="INN.png" alt="InstaDoc Metric Tracker Logo">
             </div>
-        </section>
-    </main>
+            <h1 class="hero-title animate-fade-in-up delay-1">Better Metrics. Better Healthcare.</h1>
+            <p class="hero-subtitle animate-fade-in-up delay-2">
+                Transform clinical data into actionable insights with InstaDoc Metric Tracker. 
+                Streamline your healthcare metrics, improve patient care, and make data-driven decisions with confidence.
+            </p>
+            <div class="hero-buttons animate-fade-in-up delay-3">
+                <a href="contact.html" class="btn-primary">Get Started</a>
+                <a href="services.html" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="services-preview">
+        <div class="section-header">
+            <h2>Our Solutions</h2>
+            <p>Comprehensive healthcare metric tracking solutions designed for modern clinics and hospitals</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Data Integration</h3>
+                <p>Seamlessly connect with EHR systems and automate data collection from multiple clinical sources.</p>
+                <a href="services.html" class="service-link">Learn more →</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Analytics & Reports</h3>
+                <p>Generate comprehensive reports with visual analytics to track performance and identify trends.</p>
+                <a href="services.html" class="service-link">Learn more →</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Custom Dashboards</h3>
+                <p>Role-based dashboards that provide relevant metrics for clinicians, administrators, and quality teams.</p>
+                <a href="services.html" class="service-link">Learn more →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="section-header">
+            <h2>Making an Impact</h2>
+            <p>Helping healthcare providers deliver better care through data-driven insights</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">1,200+</div>
+                <div class="stat-label">Clinic Hours Saved</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Healthcare Partners</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">System Uptime</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">HIPAA Compliant</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="section-header">
+            <h2>Why Choose InstaDoc</h2>
+            <p>Designed specifically for the unique needs of healthcare providers</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-content">
+                    <h3>Security First</h3>
+                    <p>HIPAA-compliant architecture with end-to-end encryption and regular security audits.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-content">
+                    <h3>Fast Implementation</h3>
+                    <p>Get started in days, not months, with our streamlined setup and onboarding process.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <div class="feature-content">
+                    <h3>Clinician-Friendly</h3>
+                    <p>Designed by healthcare professionals for healthcare professionals, ensuring usability and relevance.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <div class="feature-content">
+                    <h3>Mobile Ready</h3>
+                    <p>Access critical metrics and reports from any device, anywhere, at any time.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <div class="feature-content">
+                    <h3>Real-time Updates</h3>
+                    <p>Stay current with live data updates and instant notifications for critical metrics.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <div class="feature-content">
+                    <h3>Comprehensive Training</h3>
+                    <p>Full training and ongoing support to ensure your team gets maximum value from our platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Transform Your Healthcare Metrics?</h2>
+            <p class="cta-description">
+                Join hundreds of healthcare providers who are already improving patient care with InstaDoc Metric Tracker.
+                Schedule a demo today to see how we can help your organization.
+            </p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn-primary">Request a Demo</a>
+                <a href="contact.html" class="btn-secondary">Contact Sales</a>
+            </div>
+        </div>
+    </section>
 
     <footer class="site-footer">
         <p>&copy; <span id="year"></span> InstaDoc Metric Tracker. All rights reserved.</p>
     </footer>
 
     <script>
-    (function(){ document.getElementById('year').textContent = new Date().getFullYear(); })();
+    (function(){ 
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (!entry.target.classList.contains('animate-fade-in-up')) {
+                        entry.target.classList.add('animate-fade-in-up');
+                    }
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .feature-card, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    })();
     </script>
 </body>
 </html>

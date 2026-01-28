@@ -690,3 +690,33 @@ body{
 .success-modal.show {
     display: flex;
 }
+
+/* 1. Reset the Banner to be full width and centered */
+.top-banner {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    margin: 0;
+    left: 0; /* Reset the 92% shift */
+    background: linear-gradient(90deg, #333F44 0%, #4A5568 35%, rgba(255,255,255,0) 100%);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* 2. Fix the Overlay Positioning */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10%; /* Adjust this to move text left/right */
+}
+
+/* 3. Ensure Text Contrast */
+.hero-text-overlay h1 {
+    color: #ffffff !important; /* White text for the dark grey area */
+    font-size: 3.5rem;
+    text-shadow: none; /* Clean corporate look */
+}

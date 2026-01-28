@@ -5,6 +5,415 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>InstaDoc Metric Tracker - Contact</title>
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+        /* Contact Page Custom Styles */
+        :root {
+            --primary-dark: #1a365d;
+            --primary-light: #2d5ba9;
+            --accent-color: #3b82f6;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #4a5568;
+            --success-color: #10b981;
+        }
+        
+        /* Hero Section */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 5rem 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('top-view-tensiometer-checking-blood-pressure.jpg') no-repeat center center;
+            background-size: 100% 20.5%;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .contact-hero .lead {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Main Layout */
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 4rem;
+        }
+        
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        /* Form Section */
+        .form-section {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .form-section h2 {
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-intro {
+            color: var(--dark-gray);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Form Styling */
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-field {
+            position: relative;
+        }
+        
+        .form-field input,
+        .form-field textarea,
+        .form-field select {
+            width: 100%;
+            padding: 1.2rem 1rem 0.5rem;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-field input:focus,
+        .form-field textarea:focus,
+        .form-field select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .floating-label {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--dark-gray);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            background: white;
+            padding: 0 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .form-field input:focus + .floating-label,
+        .form-field input:not(:placeholder-shown) + .floating-label,
+        .form-field textarea:focus + .floating-label,
+        .form-field textarea:not(:placeholder-shown) + .floating-label,
+        .form-field select:focus + .floating-label,
+        .form-field select:not([value=""]) + .floating-label {
+            top: 0.8rem;
+            transform: translateY(0);
+            font-size: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .form-field textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-field select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+            padding-right: 2.5rem;
+        }
+        
+        .field-error {
+            color: #dc2626;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: block;
+            min-height: 1.2em;
+        }
+        
+        .form-actions {
+            margin-top: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .form-status {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        
+        .form-status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .form-status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+        
+        /* Success Modal */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .success-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .success-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .success-modal.show .success-card {
+            transform: translateY(0);
+        }
+        
+        .success-card svg {
+            background: var(--success-color);
+            border-radius: 50%;
+            padding: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .success-text strong {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Info Section */
+        .info-section {
+            background: var(--light-gray);
+            border-radius: 16px;
+            padding: 3rem;
+            height: fit-content;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .info-section h3 {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-intro {
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2.5rem;
+        }
+        
+        .info-list li {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .info-list li::before {
+            content: '✓';
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .info-list strong {
+            color: var(--primary-dark);
+            display: inline-block;
+            min-width: 70px;
+        }
+        
+        .info-list a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .info-list a:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .contact-button:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+        
+        .contact-button.secondary {
+            background: white;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+        
+        .contact-button.secondary:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        /* Image Container */
+        .image-container {
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-hero {
+                padding: 4rem 1rem;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .form-section,
+            .info-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .contact-hero {
+                padding: 3rem 1rem;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="site-nav">
@@ -19,7 +428,7 @@
                 <span></span><span></span><span></span>
             </label>
 
-                <ul class="nav-links">
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -28,22 +437,26 @@
         </div>
     </nav>
 
-    <header class="page-header">
-        <h1>Contact Instadoc</h1>
+    <!-- Hero Section -->
+    <header class="contact-hero">
+        <h1>Contact InstaDoc</h1>
         <p class="lead">Send a general enquiry or message and we'll route it to the right team.</p>
     </header>
 
-    <main class="container">
-        <section class="content">
-            <div class="card">
+    <main class="contact-container">
+        <div class="contact-layout">
+            
+            <!-- Form Section -->
+            <section class="form-section">
                 <h2>Send us a message</h2>
+                <p class="form-intro">Fill out the form below and we'll get back to you as soon as possible.</p>
 
                 <form id="contactForm" class="contact-form" novalidate action="https://formsubmit.co/d047302bf319225995a038715b18eb7f">
+                    
                     <!-- FormSubmit integration: use AJAX endpoint so page is not redirected -->
                     <input type="hidden" name="_captcha" value="false" />
                     <input type="hidden" name="_subject" value="InstaDoc Website Inquiry" />
-                    <!-- replace abbassani94@gmail.com with the real destination if different -->
-                    <!-- form will be posted to /ajax/abbassani94@gmail.com via JS -->
+                    
                     <div class="form-field">
                         <input type="text" name="name" id="name" required placeholder=" " />
                         <label class="floating-label" for="name">Name</label>
@@ -84,52 +497,54 @@
                          <div id="formStatus" class="form-status" aria-live="polite"></div>
                      </div>
                 </form>
-                <!-- stylish success popup (hidden by default) -->
+                
+                <!-- Success Modal -->
                 <div id="successModal" class="success-modal" role="status" aria-hidden="true">
                     <div class="success-card">
                         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                             <path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <div class="success-text">
-                            <strong>Thanks — message sent</strong>
-                            <div class="muted small">We will reply shortly.</div>
+                            <strong>Message Sent Successfully!</strong>
+                            <div class="muted small">We'll reply to you shortly.</div>
                         </div>
                     </div>
                 </div>
-<!--
-                <p class="muted" style="margin-top:12px;">
-                    Or email directly:
-                    <a id="directEmail" href="mailto:abbassani94@gmail.com">abbassani94@gmail.com</a>
-                </p>
+            </section>
 
-            -->
-            </div>
-        </section>
+            <!-- Info Section -->
+            <aside class="info-section">
+                <div class="image-container">
+                    <img class="blend" src="INN 2.png" alt="Contact illustration">
+                </div>
 
-        <aside class="sidebar">
-            <div class="image-container">
-                <img class="blend" src="INN 2.png" alt="Contact illustration">
-            </div>
-
-            <div class="contact-info card">
-                <h3>Quick Info</h3>
-                <p class="muted small">Prefer to talk? We're here to help.</p>
+                <h3>Quick Contact Info</h3>
+                <p class="info-intro">Prefer to talk? We're here to help with any questions about InstaDoc Metric Tracker.</p>
+                
                 <ul class="info-list">
                     <li><strong>Email:</strong> <a href="mailto:abbassani94@gmail.com">abbassani94@gmail.com</a></li>
                     <li><strong>Phone:</strong> <a href="tel:+2347030579173">+234 703 057 9173</a></li>
-                    <li><strong>Hours:</strong> Mon–Fri, 9am–5pm</li>
-                    <li>        Saturdays, 11am-4pm</li>
-                    <li><strong>Address:</strong> Wuse 2, Abuja</li>
+                    <li><strong>Hours:</strong> Mon–Fri, 9am–5pm<br>Saturdays, 11am-4pm</li>
+                    <li><strong>Address:</strong> Wuse 2, Abuja, Nigeria</li>
                 </ul>
-                <a class="btn-primary" href="mailto:abbassani94@gmail.com">Email Us</a>
-            </div>
-        </aside>
+                
+                <div class="contact-methods">
+                    <a class="contact-button" href="mailto:abbassani94@gmail.com">
+                        <span>📧</span> Email Us Directly
+                    </a>
+                    <a class="contact-button secondary" href="tel:+2347030579173">
+                        <span>📞</span> Call Our Team
+                    </a>
+                </div>
+            </aside>
+        </div>
     </main>
 
     <footer class="site-footer">
         <p>&copy; <span id="year"></span> InstaDoc Metric Tracker. All rights reserved.</p>
     </footer>
 
+    <!-- Form JavaScript (Keeping all original functionality) -->
     <script>
     (function(){
         // FormSubmit AJAX endpoint (replace email if needed)
@@ -280,7 +695,7 @@
          });
      })();
  
-     // automatic footer year (static page)
+     // automatic footer year
      (function(){ document.getElementById('year').textContent = new Date().getFullYear(); })();
      </script>
 </body>

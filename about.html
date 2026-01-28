@@ -3,21 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InstaDoc Metric Tracker - About</title>
+    <title>InstaDoc Metric Tracker - About Us</title>
     <link rel="stylesheet" href="css/style.css">
-
     <style>
-    /* Hero overlay text: leafy green (falls back to #2ea44f) */
-    .top-banner .hero-text-overlay h1,
-    .top-banner .hero-text-overlay .lead,
-    .top-banner .hero-text-overlay .muted {
-        color: var(--accent, #2ea44f);
-    }
-
-    /* Shift banner image crop to the right for better composition */
-    .top-banner .banner-img {
-        object-position: 85% 15%;
-    }
+        /* About Page Custom Styles */
+        :root {
+            --primary-dark: #1a365d;
+            --primary-light: #2d5ba9;
+            --accent-color: #3b82f6;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #4a5568;
+            --success-color: #10b981;
+        }
+        
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 6rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('top-view-tensiometer-checking-blood-pressure.jpg') no-repeat center right;
+            background-size: contain;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .about-hero .lead {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+        
+        .about-hero .subtitle {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.85;
+            position: relative;
+        }
+        
+        /* Main Content */
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+        
+        /* Mission Section */
+        .mission-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+        
+        .mission-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mission-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        .mission-card p {
+            color: var(--dark-gray);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        /* Values Section */
+        .values-section {
+            background: var(--light-gray);
+            border-radius: 16px;
+            padding: 4rem;
+            margin-bottom: 5rem;
+        }
+        
+        .values-section h2 {
+            text-align: center;
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .value-item h3 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .value-item p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        /* Team Section */
+        .team-section {
+            margin-bottom: 5rem;
+        }
+        
+        .team-section h2 {
+            text-align: center;
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .team-subtitle {
+            text-align: center;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-member-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 5px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-member h3 {
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-member p {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .team-member-desc {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Impact Section */
+        .impact-section {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-color) 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 4rem;
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+        
+        .impact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .impact-subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            padding: 2rem;
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Security Section */
+        .security-section {
+            background: var(--light-gray);
+            border-radius: 16px;
+            padding: 4rem;
+            margin-bottom: 4rem;
+        }
+        
+        .security-section h2 {
+            text-align: center;
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .security-item {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .security-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--success-color);
+        }
+        
+        .security-item h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .security-item p {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        
+        .cta-section h2 {
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 4rem 1rem;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-hero .lead {
+                font-size: 1.2rem;
+            }
+            
+            .mission-section,
+            .values-grid,
+            .team-grid,
+            .stats-grid,
+            .security-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mission-card,
+            .values-section,
+            .impact-section,
+            .security-section {
+                padding: 2rem;
+            }
+            
+            .team-member-img {
+                width: 150px;
+                height: 150px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -42,117 +393,138 @@
         </div>
     </nav>
 
-    <!-- Top banner image (INN 2.png) with hero overlay -->
-    <div class="top-banner">
-        <img src="INN 2.png" alt="InstaDoc banner" class="banner-img">
-        <div class="hero-overlay">
-            <div class="hero-text-overlay">
-                <h1>Better metrics. Better care.</h1>
-                <p class="lead">Measure what matters <br> metrics made simple, secure, and actionable.</p>
-                <p class="muted">Built with clinicians in mind: fast setup, privacy-first architecture<br>and elegant reports that drive decision-making.</p>
-                <div class="hero-ctas">
-                    <a class="btn-primary hero-cta" href="contact.html">Get Started</a>
-                    <a class="btn-outline" href="services.html">See Features</a>
-                </div>
-            </div>
-        </div>
-    </div>
-<br>
-<br>
-    <header class="page-header">
-        <h1>About InstaDoc Metric Tracker</h1>
-        <p class="lead">Smart, simple metrics for better patient care.</p>
+    <!-- Hero Section -->
+    <header class="about-hero">
+        <h1>Better Metrics. Better Care.</h1>
+        <p class="lead">Measure what matters — metrics made simple, secure, and actionable.</p>
+        <p class="subtitle">Built with clinicians in mind: fast setup, privacy-first architecture, and elegant reports that drive decision-making.</p>
     </header>
 
-    <main class="container">
-        <section class="content">
-            <div class="card">
+    <main class="about-container">
+        <!-- Mission & Vision Section -->
+        <section class="mission-section">
+            <div class="mission-card">
+                <h3>Our Mission</h3>
+                <p>To empower healthcare providers with real-time data to eliminate patient wait times and streamline clinical workflows through intelligent metric tracking and actionable insights.</p>
+            </div>
+            
+            <div class="mission-card">
+                <h3>Our Vision</h3>
+                <p>A world where quality healthcare is instant, data-driven, and accessible for everyone, enabled by transparent metrics that bridge the gap between clinical practice and patient outcomes.</p>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">🔍</div>
+                    <h3>Transparency</h3>
+                    <p>Clear, auditable metric reporting that builds trust with clinicians and patients alike. Every data point is traceable and explainable.</p>
+                </div>
                 
-                <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:flex-start;">
-                    <div style="flex:1; min-width:240px">
-                        <h3>Mission</h3>
-                        <p>To empower healthcare providers with real-time data to eliminate patient wait times.</p>
-                        <h3>Vision</h3>
-                        <p>A world where quality healthcare is instant and data-driven for everyone.</p>
-                    </div>
-                    <div style="flex:1; min-width:200px">
-                        <h3>Core Values</h3>
-                        <ul class="values-list">
-                            <li><strong>Transparency</strong> — clear, auditable metric reporting.</li>
-                            <li><strong>Accuracy</strong> — clinically-validated measurements.</li>
-                            <li><strong>Empathy</strong> — designing for patients and clinicians.</li>
-                        </ul>
-                    </div>
+                <div class="value-item">
+                    <div class="value-icon">🎯</div>
+                    <h3>Accuracy</h3>
+                    <p>Clinically-validated measurements that ensure data integrity and reliability for critical healthcare decisions.</p>
                 </div>
-            </div>
-<!--
-            <div class="card">
-                <h2>The InstaDoc Story</h2>
-                <p><strong>The Problem:</strong> For too long, clinical teams have wrestled with fragmented spreadsheets, manual forms and the chaos of old-school metric tracking — producing noise, not insight.</p>
-                <p><strong>The Solution:</strong> InstaDoc was born to bridge the gap between complex medical data and simple, actionable insight. We distilled clinician workflows into an elegant web app that captures the right data at the right time.</p>
-                <div class="timeline" aria-hidden="true">
-                    <div class="timeline-item"><strong>Idea</strong> — 2022: a clinician-designed prototype</div>
-                    <div class="timeline-item"><strong>Build</strong> — 2023: MVP and early clinic pilots</div>
-                    <div class="timeline-item"><strong>Scale</strong> — 2024: wider deployments and refinements</div>
-                </div>
-            </div>
-        -->
-            <div class="card">
-                <h2>Meet the Team</h2>
-                <p>Specialised roles that guarantee clinical validity, technical excellence and compliance.</p>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <img src="assets/images/person1.jpg" alt="Clinical Lead" style="width:96px;height:96px;border-radius:50%;object-fit:cover">
-                        <h3>Clinical Lead</h3>
-                       <!-- <p>Ensures metrics are medically accurate and actionable.</p> -->
-                    </div>
-                    <div class="team-member">
-                        <img src="assets/images/person2.jpg" alt="Tech Architect" style="width:96px;height:96px;border-radius:50%;object-fit:cover">
-                        <h3>Tech Architect</h3>
-                       <!-- <p>Designs the system architecture.</p> -->
-                    </div>
-                    <div class="team-member">
-                        <img src="assets/images/person3.jpg" alt="Compliance Officer" style="width:96px;height:96px;border-radius:50%;object-fit:cover">
-                        <h3>Compliance Officer</h3>
-                      <!--  <p>Oversees patient-data security and regulatory alignment.</p> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>Our Impact — The Standard of Care Dashboard</h2>
-                <div style="display:flex; gap:18px; flex-wrap:wrap; margin-top:12px;">
-                    <div class="stat-card">
-                        <div class="stat-value">  </div>
-                        <div class="muted small">. </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value"></div>
-                        <div class="muted small">Features</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">1,200+</div>
-                        <div class="muted small">Clinic-hours saved</div>
-                    </div>
-                </div>
-                <blockquote style="margin-top:14px; font-style:italic; color:var(--muted)">"InstaDoc transformed our metrics workflow — faster insights, better care." — Dr. A. Clinician</blockquote>
-            </div>
-
-            <div class="card">
-                <h2>Compliance &amp; Security</h2>
-                <p>Trust is non-negotiable. Our Security Pillar focuses on secure defaults, encrypted data flows, and regular audits.</p>
-                <div class="trust-badges" style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap; align-items:center">
-                    <div class="badge"> Encrypted at rest</div>
-                    <div class="badge"> Regular audits</div>
-                    <div class="badge"> Privacy-first design</div>
+                
+                <div class="value-item">
+                    <div class="value-icon">❤️</div>
+                    <h3>Empathy</h3>
+                    <p>Designing for both patients and clinicians — understanding their challenges and creating solutions that truly help.</p>
                 </div>
             </div>
         </section>
-<!--
-        <aside class="image-container" aria-hidden="true">
-            // decorative illustration to the side 
-            <img class="blend" src="assets/images/hero-placeholder.svg" alt="Team illustration">
-        </aside> -->
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2>Meet Our Leadership Team</h2>
+            <p class="team-subtitle">Specialized roles that guarantee clinical validity, technical excellence, and compliance.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="Avatar 3.png" alt="Dr. Sarah Chen" class="team-member-img">
+                    <h3>Dr. Tunde Adebayo</h3>
+                    <p>Clinical Lead</p>
+                    <p class="team-member-desc">  </p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="Avatar 1.png" alt="Alex Johnson" class="team-member-img">
+                    <h3>Ahmed Zain</h3>
+                    <p>Tech Architect</p>
+                    <p class="team-member-desc">  </p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="Avatar 2.png" alt="Michael Rodriguez" class="team-member-img">
+                    <h3>Chioma Okeke</h3>
+                    <p>Compliance Officer</p>
+                    <p class="team-member-desc">  </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="impact-section">
+            <h2>Our Impact</h2>
+            <p class="impact-subtitle">Transforming clinical workflows and improving patient care through data-driven solutions</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">1,200+</div>
+                    <div class="stat-label">Clinic-hours saved</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Healthcare partners</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value">99.9%</div>
+                    <div class="stat-label">Uptime reliability</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">HIPAA compliant</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section class="security-section">
+            <h2>Compliance & Security</h2>
+            <div class="security-grid">
+                <div class="security-item">
+                    <div class="security-icon">🔒</div>
+                    <h3>Encrypted at Rest</h3>
+                    <p>All patient data is encrypted using AES-256 encryption, ensuring maximum security even in storage.</p>
+                </div>
+                
+                <div class="security-item">
+                    <div class="security-icon">📋</div>
+                    <h3>Regular Audits</h3>
+                    <p>Continuous security assessments and third-party audits to maintain the highest standards of data protection.</p>
+                </div>
+                
+                <div class="security-item">
+                    <div class="security-icon">🛡️</div>
+                    <h3>Privacy-First Design</h3>
+                    <p>Security and privacy considerations are built into every layer of our platform from the ground up.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Transform Your Clinical Metrics?</h2>
+            <p>Join the healthcare providers who are already improving patient care with InstaDoc Metric Tracker.</p>
+            <a href="contact.html" class="cta-button">Get Started Today</a>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -160,8 +532,42 @@
     </footer>
 
     <script>
-    // automatic footer year (static page, no animations)
-    (function(){ document.getElementById('year').textContent = new Date().getFullYear(); })();
+    (function(){ 
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Add smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe cards and sections
+        document.querySelectorAll('.mission-card, .value-item, .team-member, .security-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    })();
     </script>
 </body>
 </html>

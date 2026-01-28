@@ -5,8 +5,209 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>InstaDoc Metric Tracker - Services</title>
     <link rel="stylesheet" href="css/style.css" />
-</head>
+    <style>
+        /* Additional styles for services page */
+        :root {
+            --primary-dark: #1a365d;
+            --primary-light: #2d5ba9;
+            --accent-color: #3b82f6;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #4a5568;
+        }
+        
+        .services-hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 5rem 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
 
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('top-view-tensiometer-checking-blood-pressure.jpg') no-repeat center center;
+            background-size: 100% 30%;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .services-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .services-hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 4rem;
+        }
+        
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .services-intro h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .services-intro p {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .service-card-header {
+            background: var(--accent-color);
+            color: white;
+            padding: 1.8rem;
+        }
+        
+        .service-card-header h3 {
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .service-card-content {
+            padding: 1.8rem;
+        }
+        
+        .service-card-content p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .cta-section {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .cta-section h2 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .cta-section p {
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .contact-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .services-hero {
+                padding: 3rem 1rem;
+            }
+            
+            .services-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
 
 <body>
     <nav class="site-nav">
@@ -30,80 +231,100 @@
         </div>
     </nav>
     
-<!--
-    <header class="page-header">
-        <h1>Services</h1>
-        <p class="lead">Practical solutions that make clinical metrics easier to collect, understand, and act on.</p>
+    <header class="services-hero">
+        <h1>Our Services</h1>
+        <p>Practical solutions that make clinical metrics easier to collect, understand, and act on.</p>
     </header>
 
-    <main class="container">
-        <section class="content">
-            <div class="card">
-                <h2>What we offer</h2>
-                <p>InstaDoc provides modular services tailored to clinics, hospitals, and healthcare networks — from secure data integration to hands-on training and ongoing support.</p>
-            </div>
+    <main class="services-container">
+        <section class="services-intro">
+            <h2>What We Offer</h2>
+            <p>InstaDoc provides modular services tailored to clinics, hospitals, and healthcare networks — from secure data integration to hands-on training and ongoing support.</p>
+        </section>
 
-            <div class="card">
-                <h2>Core Services</h2>
-                <div style="display:grid;gap:12px;margin-top:12px;">
-                    <div>
-                        <h3>Data Collection & Integration</h3>
-                        <p class="muted">Connect EHRs and clinical systems, automate metric capture, and normalize data for reliable reporting.</p>
-                    </div>
-
-                    <div>
-                        <h3>Analytics & Reporting</h3>
-                        <p class="muted">Pre-built and custom reports with visualizations, trend analysis, and exportable summaries for audits and meetings.</p>
-                    </div>
-
-                    <div>
-                        <h3>Custom Dashboards</h3>
-                        <p class="muted">Role-based dashboards tailored for clinicians, managers, and quality teams to surface the most relevant metrics.</p>
-                    </div>
-
-                    <div>
-                        <h3>Compliance & Security</h3>
-                        <p class="muted">HIPAA-aware design, encryption in transit and at rest, and configurable access controls to protect patient data.</p>
-                    </div>
-
-                    <div>
-                        <h3>Implementation & Onboarding</h3>
-                        <p class="muted">Project planning, system configuration, and site onboarding to get teams measuring quickly and accurately.</p>
-                    </div>
-
-                    <div>
-                        <h3>Training & Support</h3>
-                        <p class="muted">Live training sessions, documentation, and priority support plans to keep your team confident and productive.</p>
-                    </div>
+        <section class="services-grid">
+            <article class="service-card">
+                <div class="service-card-header">
+                    <h3>Real Time Clinical Services</h3>
                 </div>
-            </div>
+                <div class="service-card-content">
+                    <div class="service-icon">📊</div>
+                    <p>Connect EHRs and clinical systems, automate metric capture, and normalize data for reliable reporting. Our seamless integration reduces manual entry and ensures data accuracy.</p>
+                </div>
+            </article>
 
+            <article class="service-card">
+                <div class="service-card-header">
+                    <h3>Automated Reporting System</h3>
+                </div>
+                <div class="service-card-content">
+                    <div class="service-icon">📈</div>
+                    <p>Pre-built and custom reports with visualizations, trend analysis, and exportable summaries for audits and meetings. Transform raw data into actionable insights.</p>
+                </div>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-header">
+                    <h3>EHR Integration & Data Sync</h3>
+                </div>
+                <div class="service-card-content">
+                    <div class="service-icon">🎯</div>
+                    <p>Role-based dashboards tailored for clinicians, managers, and quality teams to surface the most relevant metrics. Get the right information to the right people.</p>
+                </div>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-header">
+                    <h3>Performance Analytics</h3>
+                </div>
+                <div class="service-card-content">
+                    <div class="service-icon">🔒</div>
+                    <p>HIPAA-aware design, encryption in transit and at rest, and configurable access controls to protect patient data. Security is built into every layer of our platform.</p>
+                </div>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-header">
+                    <h3>Implementation & Onboarding</h3>
+                </div>
+                <div class="service-card-content">
+                    <div class="service-icon">🚀</div>
+                    <p>Project planning, system configuration, and site onboarding to get teams measuring quickly and accurately. We guide you through every step of implementation.</p>
+                </div>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-header">
+                    <h3>Training & Support</h3>
+                </div>
+                <div class="service-card-content">
+                    <div class="service-icon">👨‍🏫</div>
+                    <p>Live training sessions, documentation, and priority support plans to keep your team confident and productive. We're here to ensure your long-term success.</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Transform Your Clinical Metrics?</h2>
+            <p>To discuss a demo, pricing, or implementation timeline, get in touch with our team today.</p>
             
-            <div class="card">
-                <h2>Get in touch</h2>
-                <p class="muted">To discuss a demo, pricing, or implementation timeline, choose an option below.</p>
-
-                <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);">
-                    <li>Email: <a href="mailto:hello@instadocmetrics.com">hello@instadocmetrics.com</a></li>
-                    <li>Phone: <a href="tel:+15551234567">+1 (555) 123‑4567</a></li>
-                    <li><a href="contact.html">Request a demo / contact form</a></li>
-                </ul>
-
-                <div style="margin-top:14px;">
-                    <a href="contact.html" style="display:inline-block;background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;">Request a Demo</a>
+            <a href="contact.html" class="cta-button">Request a Demo</a>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>Email:</span>
+                    <a href="mailto:abbassani94@gmail.com">abbassani94@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>Phone:</span>
+                    <a href="tel:+2347030579173">+234 703 0579 173</a>
+                </div>
+                <div class="contact-item">
+                    <span>Contact Form:</span>
+                    <a href="contact.html">Get in touch</a>
                 </div>
             </div>
         </section>
-
-
-
-
-    -->
-<!--
-        <aside class="image-container">
-            <img class="blend" src="INN 2.png" alt="Services illustration">
-        </aside>
-    -->
     </main>
 
     <footer class="site-footer">
@@ -111,7 +332,19 @@
     </footer>
 
     <script>
-    (function(){ document.getElementById('year').textContent = new Date().getFullYear(); })();
+    (function(){ 
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Add smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    })();
     </script>
 </body>
 </html>

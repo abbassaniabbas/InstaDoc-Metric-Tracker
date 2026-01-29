@@ -594,9 +594,9 @@
             </nav>
 
             <div class="footer-meta">
-                © Copyright 2026 Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners.
+                © Copyright 2026 InstaDoc, Inc. All rights reserved. Various trademarks held by their respective owners.
                 <br>
-                Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States
+                415 Adetokunbo Ademola Street, Abuja, FCT, Nigeria
             </div>
         </div>
 
@@ -607,10 +607,10 @@
 
 
 
-    <!-- Form JavaScript (Keeping all original functionality) -->
+    <!-- Form JavaScript -->
     <script>
     (function(){
-        // FormSubmit AJAX endpoint (replace email if needed)
+        // FormSubmit endpoint
         const FORM_ENDPOINT = 'https://formsubmit.co/d047302bf319225995a038715b18eb7f';
 
         const deptEmails = {
@@ -678,6 +678,7 @@
 
         Object.values(fields).forEach(el => {
             if(!el) return;
+
             // initialize has-value class if field already has content
             const parent = el.parentElement;
             if(parent) parent.classList.toggle('has-value', !!el.value && el.value.trim().length > 0);
@@ -761,5 +762,6 @@
      // automatic footer year
      (function(){ document.getElementById('year').textContent = new Date().getFullYear(); })();
      </script>
+     
 </body>
 </html>
